@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+
+	<configSections>
+		<section name="modules" type="Microsoft.Practices.Composite.Modularity.ModulesConfigurationSection, Microsoft.Practices.Composite" />
+		<section name="tasks" type="Genesyslab.Desktop.Infrastructure.Config.TasksSection, Genesyslab.Desktop.Infrastructure" />
+	</configSections>
+	<tasks>
+		
+    <task name="InteractionWorkspace.Voice.canUse" clickOnceGroupsToDownload="Voice" modulesToLoad="AgentDesktopCoreModule" />
+	</tasks>
+
+	<modules>
+		
+		<module assemblyFile="Pointel.CIS.Desktop.Core.dll"
+				moduleType="Pointel.CIS.Desktop.Core.AgentDesktopCoreModule"
+				moduleName="AgentDesktopCoreModule"
+				startupLoaded="false"/>
+		
+	</modules>
+  
+</configuration>

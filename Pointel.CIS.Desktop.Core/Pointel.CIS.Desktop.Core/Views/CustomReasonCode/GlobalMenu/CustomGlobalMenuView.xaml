@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Pointel.CIS.Desktop.Core.Views.CustomReasonCode.GlobalMenu.CustomGlobalMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:commonControls="clr-namespace:Genesyslab.Desktop.WPFCommon.Controls;assembly=Genesyslab.Desktop.WPFCommon"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:Pointel.CustomGlobalStatusMenu">
+
+    <Grid>
+        <commonControls:DropDownButton x:Name="ButtonReady" Width="Auto" Height="Auto"
+                                         VerticalAlignment="Stretch" HorizontalAlignment="Right" Background="{x:Null}" Style="{DynamicResource vistaSplitButtonStyleDark}">
+            <ContentControl.Content>
+                <StackPanel Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
+                    <!--<TextBlock x:Name="StatusBtnName" Style="{DynamicResource AgentNameStyle}" FontWeight="Normal" Margin="5,0,6,0"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           />-->
+                    <ContentControl Name="StatusBtn" />
+
+                    <Path StrokeThickness="1" Data="M 0,0 L 4,4 8,0 Z" Stretch="Uniform" VerticalAlignment="Center"
+                      Margin="0,0,0,-1" Fill="{Binding ElementName=ButtonReady, Path=Foreground}"
+                      Width="8"
+                      Height="8"
+                      Visibility="Visible" />
+                </StackPanel>
+            </ContentControl.Content>
+            <commonControls:DropDownButton.DropDown>
+                <ContextMenu Name="AgentStateContextMenu">
+                </ContextMenu>
+            </commonControls:DropDownButton.DropDown>
+        </commonControls:DropDownButton>
+    </Grid>
+</UserControl>

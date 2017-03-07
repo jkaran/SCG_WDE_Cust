@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+
+  <configSections>
+    <section name="modules" type="Microsoft.Practices.Composite.Modularity.ModulesConfigurationSection, Microsoft.Practices.Composite" />
+    <section name="tasks" type="Genesyslab.Desktop.Infrastructure.Config.TasksSection, Genesyslab.Desktop.Infrastructure" />
+  </configSections>
+  <tasks>
+
+    <task name="InteractionWorkspace.Voice.canUse" clickOnceGroupsToDownload="Voice" modulesToLoad="ContactsLookupModule" />
+  </tasks>
+
+  <modules>
+    <module assemblyFile="Pointel.AgentDesktop.VHLookup.Core.dll"
+				moduleType="Pointel.AgentDesktop.VHLookup.Core.ContactsLookupModule"
+				moduleName="ContactsLookupModule"
+				startupLoaded="false" />
+  </modules>
+</configuration>

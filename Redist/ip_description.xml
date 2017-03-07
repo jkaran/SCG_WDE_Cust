@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InstallationPackage FormatVersion="8.0">
+  <Product License="NotRequired" AppClass="Application">
+    <Release Version="8.5.110.16" BuildDate="2016-01-11" BuildNumber="1" Type="Hot Fix"/>
+    <Name>
+      <Long>Workspace Desktop Edition</Long>
+      <Nickname>IntWorkspace</Nickname>
+    </Name>
+    <Language LocaleId="ENU">
+      <Name>English (United States)</Name>
+    </Language>
+    <Description>
+      Workspace Desktop Edition extends and enhances the Agent
+      workspace with task- and role-driven capabilities and
+      features that focus on the needs of the agent, supervisor,
+      and customer. Workspace is a total agent solution. The
+      interface enables users to manage internal and external
+      conversations with contacts using a variety of popular
+      communication medias. Workspace is a modular application
+      that enables expansion and customization.
+    </Description>
+    <ReleaseNotes Place="Web" WebDBId="." FileName="release_notes.html"/>
+  </Product>
+  <Platforms OSGroupName="windows">
+    <Computer Type="Intel 32 bit">
+      <OS Name="Windows Vista" CfgOSType="18"/>
+      <OS Name="Windows Server 2008" CfgOSType="17"/>
+      <OS Name="Windows 7"/>
+      <OS Name="Windows Server 2012"/>
+      <OS Name="Windows 8"/>
+    </Computer>
+    <Computer Type="Intel EM64T">
+      <OS Name="Windows Vista" CfgOSType="18"/>
+      <OS Name="Windows Server 2008" CfgOSType="17"/>
+      <OS Name="Windows 7"/>
+      <OS Name="Windows Server 2012"/>
+      <OS Name="Windows 8"/>
+    </Computer>
+  </Platforms>
+  <AppTemplates>
+    <Template Name="Workspace_Desktop_Edition_851"
+              FileName="Workspace_Desktop_Edition_851.apd"
+              CfgAppType="157"
+              AppMetadata="Workspace_Desktop_Edition_851.xml"/>
+    <Template Name="Workspace_Desktop_Edition_SEP802_851"
+              FileName="Workspace_Desktop_Edition_SEP802_851.apd"
+              CfgAppType="157"
+              AppMetadata="Workspace_Desktop_Edition_SEP802_851.xml"/>
+    <Template Name="Workspace_Desktop_Edition_SEP85_851"
+              FileName="Workspace_Desktop_Edition_SEP85_851.apd"
+              CfgAppType="157"
+              AppMetadata="Workspace_Desktop_Edition_SEP85_851.xml"/>
+  </AppTemplates>
+  <InstallationPgm>
+    <Release Version="8.5.001.03" Date="2015-10-12"/>
+    <Name>
+      <Long>Interaction Workspace Installation Project</Long>
+      <Nickname>IntWorkspace</Nickname>
+    </Name>
+    <Language LocaleId="ENU">
+      <Name>English (United States)</Name>
+    </Language>
+  </InstallationPgm>
+</InstallationPackage>

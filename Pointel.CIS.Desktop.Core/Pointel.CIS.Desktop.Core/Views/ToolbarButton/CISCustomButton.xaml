@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Pointel.CIS.Desktop.Core.Views.ToolbarButton.CISCustomButton"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="http://schemas.tomer.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cal="http://www.codeplex.com/CompositeWPF"
+             xmlns:common="clr-namespace:Genesyslab.Desktop.WPFCommon;assembly=Genesyslab.Desktop.WPFCommon"
+             Height="Auto" Width="Auto"
+             xmlns:local="clr-namespace:Pointel.CIS.Desktop.Core.Views.ToolbarButton">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <common:DesignTimeResourceDictionary Source="/Genesyslab.Desktop.WPFCommon;component/themes/generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <!--<UserControl.InputBindings>
+        <KeyBinding Modifiers="Control"
+                    Key="U"
+                    Command="{Binding Update}" />
+        <KeyBinding Modifiers="Control"
+                    Key="S"
+                    Command="{Binding Search}" />
+        <KeyBinding Modifiers="Control"
+                    Key="T"
+                    Command="{Binding Continue}" />
+    </UserControl.InputBindings>-->
+
+    <StackPanel  Orientation="Horizontal" Name="CISToolbar" >
+        <Button Name="btnContinue" Command="{Binding Continue}" Height="35"  Content="Continue" Style="{DynamicResource SaaS_DarkToolbarButton}" ToolTip="Continue"/>
+        <Button Name="btnUpdate" Command="{Binding Update}" Height="35"  Content="Update" Style="{DynamicResource SaaS_DarkToolbarButton}" ToolTip="Update"></Button>
+        <Button Name="btnSearch" Command="{Binding Search}" Height="35" Content="Search" Style="{DynamicResource SaaS_DarkToolbarButton}" ToolTip="Search"></Button>
+
+        <WrapPanel Name="wPanel" Visibility="Collapsed"></WrapPanel> 
+    </StackPanel>
+    
+</UserControl>

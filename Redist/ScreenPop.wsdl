@@ -1,0 +1,782 @@
+<wsdl:definitions name="E92660CC" targetNamespace="file://target.files" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="file://target.files" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://ns.sempra.com/OpEx/CC/eServices/ScreenPop/Request/1.0" xmlns:xsd2="http://ns.sempra.com/OpEx/CC/eServices/ScreenPop/Response/1.0">
+  <wsdl:types>
+    <schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ns.sempra.com/OpEx/CC/eServices/ScreenPop/Request/1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cbl="http://ns.sempra.com/OpEx/CC/eServices/ScreenPop/Request/1.0">
+      <complexType name="REQUEST">
+        <sequence>
+          <element name="screen_pop_request_data" type="cbl:SCREEN_POP_REQUEST_DATA"/>
+        </sequence>
+      </complexType>
+      <complexType name="SCREEN_POP_REQUEST_DATA">
+        <sequence>
+          <element form="qualified" name="req_operation_cd">
+            <simpleType>
+              <restriction base="short">
+                <minInclusive value="0"/>
+                <maxInclusive value="9999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="req_channel_type">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="3"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="req_database_name">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="8"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="req_account_id">
+            <simpleType>
+              <restriction base="long">
+                <minInclusive value="0"/>
+                <maxInclusive value="9999999999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="req_check_digit">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="req_key_type">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="req_language_code">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+        </sequence>
+      </complexType>
+      <element name="REQUEST" type="cbl:REQUEST">
+        <annotation>
+          <documentation source="com.ibm.etools.xmlent.batch">7.26.0.V200711021424</documentation>
+        </annotation>
+      </element>
+    </schema>
+    <schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ns.sempra.com/OpEx/CC/eServices/ScreenPop/Response/1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cbl="http://ns.sempra.com/OpEx/CC/eServices/ScreenPop/Response/1.0">
+      <complexType name="RESPONSE">
+        <sequence>
+          <element name="screen_pop_response_data" type="cbl:SCREEN_POP_RESPONSE_DATA"/>
+        </sequence>
+      </complexType>
+      <complexType name="SCREEN_POP_RESPONSE_DATA">
+        <sequence>
+          <element form="qualified" name="resp_scrn_pop_oper_cd">
+            <simpleType>
+              <restriction base="short">
+                <minInclusive value="0"/>
+                <maxInclusive value="9999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="resp_return_code">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="resp_error_msg">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="100"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="resp_appl_error_cd">
+            <simpleType>
+              <restriction base="int">
+                <minInclusive value="-999999"/>
+                <maxInclusive value="999999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="resp_system_error_cd">
+            <simpleType>
+              <restriction base="int">
+                <minInclusive value="-999999"/>
+                <maxInclusive value="999999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="resp_account_id">
+            <simpleType>
+              <restriction base="long">
+                <minInclusive value="0"/>
+                <maxInclusive value="9999999999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element name="screen_pop_data" type="cbl:SCREEN_POP_DATA"/>
+        </sequence>
+      </complexType>
+      <complexType name="SCREEN_POP_DATA">
+        <sequence>
+          <element form="qualified" name="screen_pop_home_phone">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="10"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_home_phone_ext">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="10"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_customer_name">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="47"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_spouse_name">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="45"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_cust_address">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="76"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_cust_id">
+            <simpleType>
+              <restriction base="long">
+                <minInclusive value="0"/>
+                <maxInclusive value="9999999999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_cust_ty_cd">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_cf_id">
+            <simpleType>
+              <restriction base="long">
+                <minInclusive value="0"/>
+                <maxInclusive value="9999999999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_zip_code">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="5"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_mail_address">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="71"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_mail_city">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="26"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_mail_state">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_mail_zip">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="5"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_mail_zip4">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="4"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_check_digit">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_on_simple_pay">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_on_demand_pay">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_curr_bal_due">
+            <simpleType>
+              <restriction base="decimal">
+                <minInclusive value="-999999999.99"/>
+                <maxInclusive value="999999999.99"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_eligible_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_base">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="4"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ba_term_dt">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="10"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ba_paid_dt">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="10"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ba_open_dt">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="10"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ic_estb_dt">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="10"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_overdue_count">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_48hr_count">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_over_one_yr">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_off_greater6">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_read_ok_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_nbr_of_dials">
+            <simpleType>
+              <restriction base="short">
+                <minInclusive value="0"/>
+                <maxInclusive value="99"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_offer_amort_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ytd_variance">
+            <simpleType>
+              <restriction base="decimal">
+                <minInclusive value="-999999999.99"/>
+                <maxInclusive value="999999999.99"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_offer_recert_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_lpp_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_care_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_med_baseline_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_third_party_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ba_frgn_lng_cd">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_cust_segment">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_core_aggr_bill_cd">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_sba_cd">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ba_ty_cd">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_cash_only_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ba_spcl_ldgr_sw">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_vc_ordr_qty">
+            <simpleType>
+              <restriction base="int">
+                <minInclusive value="0"/>
+                <maxInclusive value="99999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_no_vc_ordr_qty">
+            <simpleType>
+              <restriction base="int">
+                <minInclusive value="0"/>
+                <maxInclusive value="99999"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_cf_ty_cd">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_asc_bill_cyc_id">
+            <simpleType>
+              <restriction base="short">
+                <minInclusive value="0"/>
+                <maxInclusive value="99"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ba_stat_cd">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_ba_cls_desc_cd">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="2"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="qualified" name="screen_pop_email_addr">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="80"/>
+              </restriction>
+            </simpleType>
+          </element>
+        </sequence>
+      </complexType>
+      <element name="RESPONSE" type="cbl:RESPONSE">
+        <annotation>
+          <documentation source="com.ibm.etools.xmlent.batch">7.26.0.V200711021424</documentation>
+        </annotation>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="createScreenPopRequestRequest">
+    <wsdl:part element="xsd1:REQUEST" name="REQUESTPart"/>
+  </wsdl:message>
+  <wsdl:message name="createScreenPopRequestResponse">
+    <wsdl:part element="xsd2:RESPONSE" name="RESPONSEPart"/>
+  </wsdl:message>
+  <wsdl:portType name="E92660CCPortType">
+    <wsdl:operation name="createScreenPopRequest">
+      <wsdl:input message="tns:createScreenPopRequestRequest" name="createScreenPopRequestRequest"/>
+      <wsdl:output message="tns:createScreenPopRequestResponse" name="createScreenPopRequestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="E92660CCBinding" type="tns:E92660CCPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createScreenPopRequest">
+      <soap:operation soapAction="urn:E92660CC" style="document"/>
+      <wsdl:input name="createScreenPopRequestRequest">
+        <soap:body parts="REQUESTPart" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createScreenPopRequestResponse">
+        <soap:body parts="RESPONSEPart" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="createScreenPopRecord">
+    <wsdl:port binding="tns:E92660CCBinding" name="E92660CCPort">
+      <soap:address location="https://soagwq1.sempra.com/OpEx/CC/eServices/ScreenPop/E92660CC/1.0"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

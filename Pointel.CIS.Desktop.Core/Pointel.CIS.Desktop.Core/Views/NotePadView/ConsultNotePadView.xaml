@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Pointel.CIS.Desktop.Core.Views.NotePadView.ConsultNotePadView"
+    ivc:HelpProvider.HelpString="Notepad"
+             KeyboardNavigation.TabNavigation="Local"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ivc="clr-namespace:Genesyslab.Desktop.WPFCommon;assembly=Genesyslab.Desktop.WPFCommon"
+             xmlns:t="clr-namespace:Tomers.WPF.Localization;assembly=Tomers.WPF.Localization"
+             xmlns:e="clr-namespace:Genesyslab.Desktop.Modules.Windows.Views.Common.Editor;assembly=Genesyslab.Desktop.Modules.Windows">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ivc:DesignTimeResourceDictionary Source="/Genesyslab.Desktop.WPFCommon;component/themes/generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <TabControl Name="CustomNotepad">
+            <TabItem Header="{Binding Header}" FontWeight="Bold" Style="{DynamicResource ShellTabItemStyle}">
+                <e:Editor Name="txtEditor" TabIndex="1" BorderThickness="0" Background="{DynamicResource ViewBackgroundBrush}"
+                  Foreground="{DynamicResource LightControlForegroundBrush}" KeyboardNavigation.TabNavigation="Local"
+                   Format="Text" ShowToolbar="False" IsReadOnly="True" FontWeight="Normal">
+                </e:Editor>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

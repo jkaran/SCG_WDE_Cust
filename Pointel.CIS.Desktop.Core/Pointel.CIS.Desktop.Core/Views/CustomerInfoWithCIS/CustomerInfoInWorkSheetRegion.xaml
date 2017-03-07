@@ -1,0 +1,198 @@
+﻿<UserControl x:Class="Pointel.CIS.Desktop.Core.Views.CustomerInfoWithCIS.CustomerInfoInWorkSheetRegion"
+             dtrd:HelpProvider.HelpString="Case_Data" Height="158" Width="359"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:Pointel.CIS.Desktop.Core.Converter"
+             xmlns:dtrd="clr-namespace:Genesyslab.Desktop.WPFCommon;assembly=Genesyslab.Desktop.WPFCommon"
+             xmlns:ee="clr-namespace:Genesyslab.Desktop.WPFCommon.Controls;assembly=Genesyslab.Desktop.WPFCommon"
+             xmlns:t="clr-namespace:Tomers.WPF.Localization;assembly=Tomers.WPF.Localization"
+             xmlns:e="clr-namespace:Genesyslab.Desktop.Modules.Windows.Views.Common.Editor;assembly=Genesyslab.Desktop.Modules.Windows">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Pointel.CIS.Desktop.Core;component/Resources/StyleResource.xaml" />
+                <dtrd:DesignTimeResourceDictionary Source="/Genesyslab.Desktop.WPFCommon;component/themes/generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <TabControl  Margin="0,5,0,0" Name="TabControlCustomerInfo">
+            <TabItem  Name="CustomerInfoTab"   Style="{DynamicResource ShellTabItemStyle}">
+                <TabItem.Header>
+                    <TextBlock FontWeight="Bold" Text="Customer Info" />
+                </TabItem.Header>
+                <Border Grid.Row="2" SnapsToDevicePixels="True">
+                    <Grid  x:Name="GridLayout">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" ></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid  Name="BtnGrid" Grid.Row="0" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" MinWidth="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Width="Auto" MinWidth="90" Height="Auto" MinHeight="25" HorizontalAlignment="Left"  Margin="5,6,0,5" VerticalAlignment="Top" Command="{Binding Continue}">Continue</Button>
+                            <Button Grid.Row="0" Grid.Column="1" Width="90" Height="Auto"  MinHeight="25" HorizontalAlignment="Left"  Margin="5,6,0,5" VerticalAlignment="Top" Command="{Binding Update}" >Update</Button>
+                            <Button Grid.Row="0" Grid.Column="2" Width="90" Height="Auto" MinHeight="25" HorizontalAlignment="Left"  Margin="5,6,0,5" VerticalAlignment="Top" Command="{Binding Search}">Search</Button>
+                        </Grid>
+                        <ee:ExpanderEx Name="custInfo" Visibility="Collapsed" Height="Auto"  Grid.Column="0" Grid.Row="1" IsExpanded="True" Template="{StaticResource StretchyExpanderTemp}"  BorderThickness="20" ToolTip="" ToolTipService.IsEnabled="False" Focusable="False">
+                            <ee:ExpanderEx.Header>
+                                <TextBlock FlowDirection="LeftToRight" VerticalAlignment="Center" Foreground="White" TextBlock.FontWeight="Bold" Text="Customer Info">
+                                </TextBlock>
+                            </ee:ExpanderEx.Header>
+                            <ee:ExpanderEx.Content>
+                                <UniformGrid Rows="1">
+                                    <Border Height="Auto" Background="{DynamicResource ViewBackgroundBrush}" BorderThickness="0" BorderBrush="{Binding FrameColor}">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto"  Margin="2" FlowDirection="LeftToRight">
+                                            <WrapPanel Width="auto"  Name="Customer_InfoView">
+                                                <Grid Background="{DynamicResource ViewBackgroundBrush}">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="5"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="5"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="5"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="5"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="5"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+
+                                                    <ItemsControl Margin="10,5,10,0" Padding="0" BorderThickness="{Binding BorderThickness}" BorderBrush="#5E656B" Focusable="False"
+                                  FocusManager.IsFocusScope="True" ItemsSource="{Binding CallInfoDataCollection}" Grid.Row="0" Width="{Binding ElementName=GridLayout,Path=ActualWidth}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="0,5,0,5" HorizontalAlignment="Left">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock  Grid.Column="0" FontWeight="Bold" Width="150" TextWrapping="Wrap"
+                                           Foreground="{DynamicResource LightControlForegroundBrush}" Text="{Binding Path=OptionName, StringFormat={}{0}:}" />
+                                                                    <TextBlock Grid.Column="1" Margin="5,0,5,0" Text="{Binding Path=OptionValue}" Width="Auto" TextWrapping="Wrap"
+                                           Foreground="{Binding Path=ColorName}"></TextBlock>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                    <ItemsControl Margin="10,5,10,0"  BorderThickness="{Binding BorderThickness}" BorderBrush="#5E656B" Focusable="False"
+                                  FocusManager.IsFocusScope="True" ItemsSource="{Binding AccountDataCollection}" Grid.Row="2">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="0,5,0,5" HorizontalAlignment="Left">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock  Grid.Column="0" FontWeight="Bold" Width="150" TextWrapping="Wrap"
+                                           Foreground="{DynamicResource LightControlForegroundBrush}" Text="{Binding Path=OptionName, StringFormat={}{0}:}" />
+                                                                    <TextBlock Grid.Column="1" Margin="5,0,5,0" Text="{Binding Path=OptionValue}" Width="Auto" TextWrapping="Wrap"
+                                           Foreground="{Binding Path=ColorName}"></TextBlock>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                    <ItemsControl Margin="10,5,10,0"  BorderThickness="{Binding BorderThickness}" BorderBrush="#5E656B" Focusable="False"
+                                  FocusManager.IsFocusScope="True" ItemsSource="{Binding AddressDataCollection}" Grid.Row="4">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="0,5,0,5" HorizontalAlignment="Left">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock  Grid.Column="0" FontWeight="Bold" Width="150" TextWrapping="Wrap"
+                                           Foreground="{DynamicResource LightControlForegroundBrush}" Text="{Binding Path=OptionName, StringFormat={}{0}:}" />
+                                                                    <TextBlock Grid.Column="1" Margin="5,0,5,0" Text="{Binding Path=OptionValue}" Width="Auto" TextWrapping="Wrap"
+                                           Foreground="{Binding Path=ColorName}"></TextBlock>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                    <ItemsControl Name="ItemsControlNoticeAmountData" Margin="10,5,10,0" BorderThickness="{Binding BorderThickness}" BorderBrush="#5E656B" Focusable="False"
+                                  FocusManager.IsFocusScope="True" ItemsSource="{Binding NoticeAmountDataCollection}" Grid.Row="6">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="0,5,0,5" HorizontalAlignment="Left">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Grid.Column="0" FontWeight="Bold" Width="150" TextWrapping="Wrap"
+                                           Foreground="{DynamicResource LightControlForegroundBrush}" Text="{Binding Path=OptionName, StringFormat={}{0}:}" />
+                                                                    <TextBlock Grid.Column="1" Margin="5,0,5,0" Text="{Binding Path=OptionValue}" Width="Auto" TextWrapping="Wrap"
+                                           Foreground="{Binding Path=ColorName}"></TextBlock>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                    <ItemsControl Margin="10,5,10,0"   BorderThickness="{Binding BorderThickness}" BorderBrush="#5E656B" Focusable="False"
+                                  FocusManager.IsFocusScope="True" ItemsSource="{Binding PhoneDataCollection}" Grid.Row="8">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="0,5,0,5" HorizontalAlignment="Left">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Grid.Column="0" FontWeight="Bold" Width="150" TextWrapping="Wrap"
+                                           Foreground="{DynamicResource LightControlForegroundBrush}" Text="{Binding Path=OptionName, StringFormat={}{0}:}" />
+                                                                    <TextBlock Grid.Column="1" Margin="5,0,5,0" Text="{Binding Path=OptionValue}" Width="Auto" TextWrapping="Wrap"
+                                           Foreground="{Binding Path=ColorName}"></TextBlock>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                    <ItemsControl Margin="10,5,10,0" BorderThickness="{Binding BorderThickness}" BorderBrush="#5E656B" Focusable="False"
+                                  FocusManager.IsFocusScope="True" ItemsSource="{Binding IVRDataCollection}" Grid.Row="10">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="0,5,0,5" HorizontalAlignment="Left">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Grid.Column="0" FontWeight="Bold" Width="150" TextWrapping="Wrap"
+                                           Foreground="{DynamicResource LightControlForegroundBrush}" Text="{Binding Path=OptionName, StringFormat={}{0}:}" />
+                                                                    <TextBlock Grid.Column="1" Margin="5,0,5,0" Text="{Binding Path=OptionValue}" Width="Auto" TextWrapping="Wrap"
+                                           Foreground="{Binding Path=ColorName}"></TextBlock>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </Grid>
+                                            </WrapPanel>
+                                        </ScrollViewer>
+                                    </Border>
+                                </UniformGrid>
+                            </ee:ExpanderEx.Content>
+                        </ee:ExpanderEx>
+                        <StackPanel  Name="wPanel" Grid.Column="0" Grid.Row="2" Visibility="Collapsed"></StackPanel>
+                        <TextBlock Grid.Row="2" Name="textBlockMessage" Visibility="Collapsed" Text="No CustomerInfo Available" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                </Border>
+            </TabItem>
+
+            <TabItem Name="NotesTab" Height="Auto" Width="Auto" Style="{DynamicResource ShellTabItemStyle}" Visibility="Collapsed">
+                <TabItem.Header>
+                    <TextBlock FontWeight="Bold" Text="Custom Note" />
+                </TabItem.Header>
+                <e:Editor Name="txtEditor" TabIndex="1" BorderThickness="0" Background="{DynamicResource ViewBackgroundBrush}"
+                  Foreground="{DynamicResource LightControlForegroundBrush}" KeyboardNavigation.TabNavigation="Local"
+                   Format="Text" ShowToolbar="False" IsReadOnly="True" FontWeight="Normal">
+                </e:Editor>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
